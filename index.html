@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sam Vlessing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
+      line-height: 1.75;
+      color: #111;
+      background: #fff;
+      padding: 80px 20px 120px;
+    }
+
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .site-name {
+      font-size: 13px;
+      font-weight: 400;
+      color: #999;
+      margin-bottom: 60px;
+      letter-spacing: 0.02em;
+    }
+
+    /* Photo */
+    .photo-wrap {
+      margin-bottom: 48px;
+    }
+
+    .photo-wrap img {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(20%);
+    }
+
+    /* Replace src with your actual photo path when deploying */
+    .photo-placeholder {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #aaa;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 40px;
+    }
+
+    .label {
+      font-weight: 500;
+      font-size: 13px;
+      margin-bottom: 10px;
+      color: #111;
+    }
+
+    p {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 6px;
+    }
+
+    .role-block {
+      margin-bottom: 24px;
+    }
+
+    .role-title {
+      font-weight: 500;
+      font-size: 14px;
+      color: #111;
+      margin-bottom: 4px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      font-size: 14px;
+      color: #333;
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 3px;
+    }
+
+    ul li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: #bbb;
+    }
+
+    /* Footer / links */
+    .footer-links {
+      margin-top: 56px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    a {
+      color: #111;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: #ccc;
+      transition: text-decoration-color 0.15s;
+      font-size: 14px;
+    }
+
+    a:hover {
+      text-decoration-color: #111;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="site-name">Sam Vlessing</div>
+
+    <div class="photo-wrap">
+      <img src="data:image/png;base64,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
+
+    <section>
+      <div class="label">About me:</div>
+      <p>I'm Sam and I'm a founder and operator.</p>
+    </section>
+
+    <section>
+      <div class="label">Some of what I've done:</div>
+
+      <div class="role-block">
+        <div class="role-title">Commercebear — Founder &amp; CEO</div>
+        <ul>
+          <li>Bootstrapped before raising $15M from leading institutional investors in the US and Canada</li>
+          <li>Helped furniture manufacturers manage over $500M in GMV and 1M+ SKUs</li>
+          <li>Built a team of 50 across FP&amp;A, ops, sales, marketing, product, and engineering</li>
+          <li>Recognized by Forbes Best Startup Employers, Furniture Today Best Technology 2x, CIX Top 20, and personally 40u40 by Home Furnishings Business</li>
+        </ul>
+      </div>
+
+      <div class="role-block">
+        <div class="role-title">CEMM — Board of Directors &amp; Advisor</div>
+        <ul>
+          <li>Secured $30M+ in provincial contracts</li>
+          <li>Created 500+ new essential jobs across 20 manufacturing plants</li>
+          <li>Partnered with Health Canada, Ontario Premier's Office, and Dept. of Economic Development</li>
+          <li>Guided the company from founding through scale as a member of the board</li>
+        </ul>
+      </div>
+
+      <div class="role-block">
+        <div class="role-title">Coja Leatherline of Canada — Director</div>
+        <ul>
+          <li>Built and scaled ecommerce to a $5M run rate within 12 months</li>
+        </ul>
+      </div>
+
+      <div class="role-block">
+        <div class="role-title">CBRE Group — Analyst</div>
+        <ul>
+          <li>Promoted early; reported directly to EVP David Montressor</li>
+          <li>Supported $100M+ in multi-residential transactions</li>
+          <li>Performed underwriting, financial modeling, and valuation for large-scale multifamily assets</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="label">About my time in school:</div>
+      <ul>
+        <li>Dalhousie University, where I played D1 varsity soccer for the Tigers</li>
+        <li>Dean's Honour List and numerous academic awards</li>
+        <li>Captain of my high school soccer team 4x, MVP 2x</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="label">Things I care deeply about:</div>
+      <ul>
+        <li>Health and fitness — I'm at the gym most days</li>
+        <li>Longevity and long-term resilience</li>
+        <li>Building a life optimized for happiness, surrounded by people with a shared value system</li>
+      </ul>
+    </section>
+
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/vlessing/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:sam@svlessing.com">sam@svlessing.com</a>
+    </div>
+
+  </div>
+</body>
+</html>
