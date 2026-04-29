@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sam Vlessing</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { transition: background 0.2s, color 0.2s; }
+
+    html.dark body { background: #111; color: #e8e8e8; }
+    html.dark .top-bar { background: #111; border-bottom-color: #333; }
+    html.dark ul li { color: #bbb; }
+    html.dark .role-title { color: #ccc; }
 
     body {
       font-family: 'Courier New', Courier, monospace;
@@ -14,6 +21,7 @@
       color: #111;
       background: #fff;
       padding-top: 40px;
+      transition: background 0.2s, color 0.2s;
     }
 
     .top-bar {
@@ -29,6 +37,7 @@
       justify-content: space-between;
       padding: 0 40px;
       z-index: 100;
+      transition: background 0.2s, border-color 0.2s;
     }
 
     .top-bar-left {
@@ -48,7 +57,6 @@
     .top-bar-left span {
       font-family: 'Courier New', Courier, monospace;
       font-size: 13px;
-      color: #111;
     }
 
     .top-bar-right {
@@ -61,10 +69,39 @@
       display: flex;
       align-items: center;
       text-decoration: none;
-      color: #111;
+      color: inherit;
+      opacity: 0.8;
     }
 
-    .top-bar-right a:hover { opacity: 0.6; }
+    .top-bar-right a:hover { opacity: 1; }
+
+    .toggle {
+      cursor: pointer;
+      width: 32px;
+      height: 18px;
+      border-radius: 9px;
+      background: #ddd;
+      border: none;
+      position: relative;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+
+    html.dark .toggle { background: #555; }
+
+    .toggle::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #fff;
+      transition: transform 0.2s;
+    }
+
+    html.dark .toggle::after { transform: translateX(14px); }
 
     .content {
       max-width: 680px;
@@ -114,6 +151,7 @@
       <a href="mailto:sam@svlessing.com" title="Email">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       </a>
+      <button class="toggle" id="toggle" title="Toggle dark mode"></button>
     </div>
   </div>
 
@@ -126,6 +164,11 @@
 
     <section>
       <div class="label">Some of what I've done:</div>
+
+      <p class="role-title">iNovia Capital - Entrepreneur in Residence</p>
+      <ul>
+        <li>Canada's leading venture capital firm with $2.5B+ AUM. Previously a portfolio founder, now here to help portfolio companies</li>
+      </ul>
 
       <p class="role-title">Commercebear - B2B software company, Founder &amp; CEO</p>
       <ul>
@@ -163,6 +206,12 @@
     </section>
 
   </div>
+
+  <script>
+    document.getElementById('toggle').addEventListener('click', function() {
+      document.documentElement.classList.toggle('dark');
+    });
+  </script>
 
 </body>
 </html>
